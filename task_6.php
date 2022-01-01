@@ -59,6 +59,7 @@
                             "twitter_href" => "https://twitter.com/@myplaneticket",
                             "twitter"      => "@myplaneticket",
                             "email_href"   => "https://wrapbootstrap.com/user/myorange",
+                            "email_text"   => "<i class=\"fal fa-envelope\"></i> ",
                             "email_title"  => "Contact Sunny",
                             "status"       => "active",
                         ],
@@ -70,6 +71,7 @@
                             "twitter_href" => "https://twitter.com/@atlantez",
                             "twitter"      => "@atlantez",
                             "email_href"   => "https://wrapbootstrap.com/user/Walapa",
+                            "email_text"   => "<i class=\"fal fa-envelope\"></i> ",
                             "email_title"  => "Contact Jos",
                             "status"       => "active",
                         ],
@@ -81,6 +83,7 @@
                             "twitter_href" => "https://twitter.com/@lodev09",
                             "twitter"      => "@lodev09",
                             "email_href"   => "https://wrapbootstrap.com/user/lodev09",
+                            "email_text"   => "<i class=\"fal fa-envelope\"></i> ",
                             "email_title"  => "Contact Jovanni",
                             "status"       => "banned",
                         ],
@@ -92,6 +95,7 @@
                             "twitter_href" => "https://twitter.com/@sildur",
                             "twitter"      => "@sildur",
                             "email_href"   => "https://wrapbootstrap.com/user/sildur",
+                            "email_text"   => "<i class=\"fal fa-envelope\"></i> ",
                             "email_title"  => "Contact Roberto",
                             "status"       => "banned",
                         ],
@@ -101,7 +105,12 @@
                         <?php
                         foreach ($persons as $person):
                             ?>
-                            <div class="<?php if ($person["status"] == "banned") echo "banned"; else echo ''; ?> rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0">
+                            <div class="<?php
+                            if ($person["status"] == "banned") {
+                                echo "banned";
+                            } else {
+                                echo '';
+                            } ?> rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0">
                                 <img src="<?php
                                 echo $person["img"]; ?>" alt="<?php
                                 echo $person["img_alt"]; ?>"
@@ -126,8 +135,7 @@
                                     echo $person["email_href"]; ?>"
                                        class="text-info fs-sm" target="_blank"
                                        title="<?php
-                                       echo $person["email_title"]; ?>"><i
-                                                class="fal fa-envelope"></i></a>
+                                       echo $person["email_title"]; ?>"><?php echo $person["email_text"]; ?></a>
                                 </div>
                             </div>
                         <?php
