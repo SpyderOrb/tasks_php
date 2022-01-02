@@ -12,15 +12,13 @@ $compare = $statement->fetch(PDO::FETCH_ASSOC);
 if ( ! empty($compare)) {
     $massage            = "Запись уже есть в таблице!";
     $_SESSION['danger'] = $massage;
-    header("Location: /task_10.php");
-    exit;
+} else {
+    
+    $sql       = "INSERT INTO `names` (name) VALUES (:name)";
+    $statement = $pdo->prepare($sql);
+    $statement->execute(['name' => $name]);
+    
+    $massage             = "Запись успешно добавлена.";
+    $_SESSION['success'] = $massage;
 }
-
-$sql       = "INSERT INTO `names` (name) VALUES (:name)";
-$statement = $pdo->prepare($sql);
-$statement->execute(['name' => $name]);
-
-$massage             = "Запись успешно добавлена.";
-$_SESSION['success'] = $massage;
-
 header("Location: /task_10.php");
